@@ -10,7 +10,7 @@
 
 ## 💻 Projeto
 
-Desafio do curso 100 Days of SwiftUI, de um Jogo de pedra, papel e tesoura.
+Desafio do curso 100 Days of SwiftUI - Jogo de pedra, papel e tesoura.
 
 ## 🚀 Tecnologias utilizadas
 
