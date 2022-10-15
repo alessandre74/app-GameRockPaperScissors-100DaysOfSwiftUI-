@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var countQuestion = 0
     @State private var message = "Vamos Jogar"
     @State private var isAlert = false
-    @State var imageSelect = ""
+    @State var itenSelect = -1
     
     var moves = ["rock", "paper", "scissors"]
     let images = [ "✊", "✋", "✌️"]
@@ -37,11 +37,11 @@ struct ContentView: View {
                             Button {
                                 withAnimation(.easeIn(duration: 0.3)) {
                                     choice(number)
-                                    imageSelect = images[number]
+                                    itenSelect = number
                                 }
                     
                             } label: {
-                                ItensView(images: images, number: number, imageSelect: imageSelect)
+                                ItensView(images: images, number: number, itenSelect: itenSelect)
                                 
                             }
                         }
@@ -119,7 +119,7 @@ struct ContentView: View {
         randonChoice = 0
         countScore = 0
         countQuestion = 0
-        imageSelect = ""
+        itenSelect = -1
         message = "Vamos Jogar"
     }
 }
@@ -142,24 +142,17 @@ struct TopView: View {
 struct ItensView: View {
     var images: [String]
     var number: Int
-    var imageSelect: String
+    var itenSelect: Int
     
     var body: some View {
         VStack {
-            if imageSelect == images[number] {
-                Text(images[number])
-                    .font(.system(size: 50))
-                    .frame(width: 80, height: 80)
-                    .background(Circle().fill(Color.moves))
-                    .shadow(radius: 5)
-                    .background(Circle().stroke(Color.itens, lineWidth: 9))
-            } else {
-                Text(images[number])
-                    .font(.system(size: 50))
-                    .frame(width: 80, height: 80)
-                    .background(Circle().fill(Color.moves))
-                    .shadow(radius: 5)
-            }
+            Text(images[number])
+                .font(.system(size: 50))
+                .frame(width: 80, height: 80)
+                .background(Circle().fill(Color.moves))
+                .shadow(radius: 5)
+                .background(Circle().stroke(Color.itens, lineWidth: number == itenSelect ? 9 : 0))
+
         }
     }
 }
